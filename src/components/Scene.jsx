@@ -18,11 +18,11 @@ const Scene = () => {
           <Bottle position={[0, -2, 0]} />
         </ScrollControls>
 
-        <OrbitControls
+        {/* <OrbitControls
           target={[0, 0, 0]}
           enableZoom={false}
           enableRotate={false}
-        />
+        /> */}
         {/* <Environment preset="sunset" /> */}
       </Canvas>
     </div>
