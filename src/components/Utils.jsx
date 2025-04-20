@@ -35,11 +35,27 @@ export const GenerateInitMaterials = () => {
   return { cristalMaterial, sodaMaterial, brandMaterial };
 };
 
+export const LoadTextures = (imagePaths) => {
+  const textureLoader = new THREE.TextureLoader();
+  const textures = {};
+
+  imagePaths.forEach((img) => {
+    const path = `/${img}.png`;
+    const texture = textureLoader.load(path);
+    texture.flipY = false;
+    textures[img] = texture;
+  });
+
+  return textures;
+};
+
 export const GenerateAnimations = (
   scene,
   colors,
   cristalMaterial,
-  sodaMaterial
+  sodaMaterial,
+  brandMaterial,
+  textures
 ) => {
   const Animations = [
     //InitAnimations - Page 0
@@ -75,6 +91,23 @@ export const GenerateAnimations = (
           );
           sodaMaterial.needsUpdate = true;
         },
+      },
+    },
+    {
+      target: colors,
+      pointTime: 0.5,
+      animationProperties: {
+        onUpdate: () => {
+          brandMaterial.map = textures["FalloutBoy"];
+          brandMaterial.needsUpdate = true;
+        },
+      },
+    },
+    {
+      target: document.getElementById("bg_container"),
+      pointTime: 0.1,
+      animationProperties: {
+        background: "#000000",
       },
     },
 
@@ -113,6 +146,32 @@ export const GenerateAnimations = (
         },
       },
     },
+    {
+      target: colors,
+      pointTime: 3,
+      animationProperties: {
+        onUpdate: () => {
+          brandMaterial.map = textures["Classic"];
+          brandMaterial.needsUpdate = true;
+        },
+      },
+    },
+    {
+      target: document.getElementById("Classic_Card"),
+      pointTime: 2.5,
+      animationProperties: {
+        opacity: 1,
+        left: "25%",
+        onUpdate: () => {},
+      },
+    },
+    {
+      target: document.getElementById("bg_container"),
+      pointTime: 2.1,
+      animationProperties: {
+        background: "#F37070",
+      },
+    },
     //Quantum Cola - Page 2
     {
       target: scene.getObjectByName("BottleGroup").position,
@@ -146,6 +205,41 @@ export const GenerateAnimations = (
           );
           sodaMaterial.needsUpdate = true;
         },
+      },
+    },
+    {
+      target: colors,
+      pointTime: 5,
+      animationProperties: {
+        onUpdate: () => {
+          brandMaterial.map = textures["Quantum"];
+          brandMaterial.needsUpdate = true;
+        },
+      },
+    },
+    {
+      target: document.getElementById("Quantum_Card"),
+      pointTime: 4.5,
+      animationProperties: {
+        opacity: 1,
+        left: "65%",
+        onUpdate: () => {},
+      },
+    },
+    {
+      target: document.getElementById("Classic_Card"),
+      pointTime: 4.3,
+      animationProperties: {
+        opacity: 0,
+        left: "50%",
+        onUpdate: () => {},
+      },
+    },
+    {
+      target: document.getElementById("bg_container"),
+      pointTime: 4.1,
+      animationProperties: {
+        background: "#71C4F4",
       },
     },
 
@@ -183,6 +277,41 @@ export const GenerateAnimations = (
           );
           sodaMaterial.needsUpdate = true;
         },
+      },
+    },
+    {
+      target: colors,
+      pointTime: 7,
+      animationProperties: {
+        onUpdate: () => {
+          brandMaterial.map = textures["Sunset"];
+          brandMaterial.needsUpdate = true;
+        },
+      },
+    },
+    {
+      target: document.getElementById("Sunset_Card"),
+      pointTime: 6.5,
+      animationProperties: {
+        opacity: 1,
+        left: "25%",
+        onUpdate: () => {},
+      },
+    },
+    {
+      target: document.getElementById("Quantum_Card"),
+      pointTime: 6.3,
+      animationProperties: {
+        opacity: 0,
+        left: "50%",
+        onUpdate: () => {},
+      },
+    },
+    {
+      target: document.getElementById("bg_container"),
+      pointTime: 6.1,
+      animationProperties: {
+        background: "#F5C771",
       },
     },
   ];

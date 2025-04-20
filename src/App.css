@@ -106,14 +106,3 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-
-/*Hide the scrollbar*/
-
-.canvas div div::-webkit-scrollbar {
-  display: none;
-}
-
-.canvas div div {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
