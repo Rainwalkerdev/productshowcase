@@ -14,7 +14,7 @@ const Scene = () => {
           color="#ffffff"
         />
 
-        <ScrollControls pages={4} damping={0.5}>
+        <ScrollControls pages={8} damping={0.5}>
           <Bottle position={[0, -2, 0]} />
         </ScrollControls>
 

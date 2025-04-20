@@ -34,3 +34,19 @@ export const GenerateInitMaterials = () => {
 
   return { cristalMaterial, sodaMaterial, brandMaterial };
 };
+
+export const GenerateAnimations = (Scene) => {
+  const Animations = [
+    //InitAnimations - Page 0
+    {
+      target: scene.getObjectByName.("BottleGroup").position,
+      pointTime: 0,
+      animationProperties: {
+        x: 0,
+        onUpdate: () => {},
+      }
+  }
+
+  //Nuka Cola - Page 1 
+];
+};
